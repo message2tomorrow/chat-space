@@ -15,6 +15,3 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
-# 末尾に次の記述を追加
-public/uploads/*
