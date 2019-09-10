@@ -19,38 +19,12 @@
         .right-header__button
           Edit
     .messages
-      .message
-        .upper-message
-          .upper-message__user-name
-            メンバーテスト１
-          .upper-message__date
-            2019/09/09
-        .lower-meesage
-          .lower-message__content
-            メッセージテスト１
-      .message
-        .upper-message
-          .upper-message__user-name
-            メンバーテスト２
-          .upper-message__date
-            2019/09/09
-        .lower-meesage
-          .lower-message__content
-            メッセージテスト２
-      .message
-        .upper-message
-          .upper-message__user-name
-            メンバーテスト３
-          .upper-message__date
-            2019/09/09
-        .lower-meesage
-          .lower-message__content
-            メッセージテスト３
+      = render @messages
     .form
-      %form
-        %input.form__message
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
         .form__mask
-          %label.form__mask__image
+          = f.label :image, class: 'form__mask__image' do
             = fa_icon 'picture-o', class: 'icon'
-            %input.hidden{type: 'file'}
-        %input.form__submit{type: 'submit', value: 'Send'}
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
