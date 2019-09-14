@@ -44,7 +44,7 @@
     height: calc(100% - 100px - 90px);
     .message {
       .upper-message {
-        display: flex;
+        display: auto;
         &__user-name {
           color: $black;
           font-size: 16px;
