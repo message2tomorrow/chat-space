@@ -1,43 +1,25 @@
-$(function(){
-  function buildHTML(message){
-        if ( message.image ) {
-          var html =
-           `<div class="message" data-message-id=${message.id}>
-                <div class="upper-message">
-                <div class="upper-message__user-name">
-                  ${message.user_name}
-                </div>
-                <div class="upper-message__date">
-                  ${message.date}
-                </div>
-              </div>
-              <div class="lower-message">
-                <p class="lower-message__content">
-                  ${message.content}
-                </p>
-              </div>
-              <img src=${message.image} >
-            </div>`
-          return html;
-        } else {
-        `<div class="message" data-message-id=${message.id}>
-             <div class="upper-message">
-               <div class="upper-message__user-name">
-                ${message.user_name}
-              </div>
-              <div class="upper-message__date">
-                ${message.date}
-              </div>
-         </div>
-         <div class="lower-message">
-            <p class="lower-message__content">
-              ${message.content}
-            </p>
-          </div>
-         </div>`
-         return html;
-        };
-      }
+$(function () {
+  function buildHTML(message) {
+    var content = message.content ? `${message.content}` : "";
+    var img = message.image ? `<img class="lower-info__image" src="${message.image}">` : "";
+    var html = `<div class="message" data-message-id="${message.id}">
+                  <div class="upper-info">
+                    <p class="upper-info__user">
+                      ${message.user_name}
+                    </p>
+                    <p class="upper-info__date">
+                      ${message.date}
+                    </p>
+                  </div>
+                    <div class="lower-info">
+                      <p class="lower-info__content">
+                          ${content}
+                      </p>
+                          ${img}
+                    </div>
+                </div>`
+    return html;
+  }
   $('#new_message').on('submit', function(e){
    e.preventDefault();
    var formData = new FormData(this);
