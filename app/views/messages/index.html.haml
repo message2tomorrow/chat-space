@@ -5,19 +5,14 @@
   .chat
     .header
       .left-header
-        .left-header__title
-          グループ名
+        .left-header__title= @group.name
         %ul.left-header__members
           Member：
-          %li.member
-            メンバー名１；
-          %li.member
-            メンバー名２；
-          %li.member
-            メンバー名３；
-      .right-header
-        .right-header__button
-          Edit
+          - @group.users.each do |user|
+            %li.member= user.name
+      = link_to edit_group_path(@group) do
+        .right-header
+          .right-header__button  Edit
     .messages
       = render @messages
     .form
