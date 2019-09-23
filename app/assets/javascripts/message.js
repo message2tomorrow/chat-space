@@ -22,6 +22,7 @@ $(function () {
   }
   $('#new_message').on('submit', function(e){
    e.preventDefault();
+
    var formData = new FormData(this);
    var url = $(this).attr('action')
    $.ajax({
@@ -42,5 +43,34 @@ $(function () {
        alert('error');
      });
      return false;
-   });
-  });
+    });
+  var reloadMessages = function() {
+    last_message_id = $('.message:last').data("message-id"); 
+    var urlRegex = new RegExp("groups/\[0-9]{1,}/messages")
+  var currentUrl = location.pathname
+  console.log(last_message_id);
+  
+  if( urlRegex.test(currentUrl) ) {
+    $.ajax({
+      type: 'get',
+      url: './api/messages',
+      dataType: 'json',
+      data: { id: last_message_id }
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      console.log(messages);
+  
+      messages.forEach(function(message){
+        insertHTML = buildHTML(message);
+        $('.messages').append(insertHTML);
+      });
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+    })
+    .fail(function() {
+      alert.log('error');
+    });
+  }
+  };
+  setInterval(reloadMessages, 3000);
+});
