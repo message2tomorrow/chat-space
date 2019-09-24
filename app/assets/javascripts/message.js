@@ -48,8 +48,6 @@ $(function () {
     last_message_id = $('.message:last').data("message-id"); 
     var urlRegex = new RegExp("groups/\[0-9]{1,}/messages")
   var currentUrl = location.pathname
-  console.log(last_message_id);
-  
   if( urlRegex.test(currentUrl) ) {
     $.ajax({
       type: 'get',
@@ -66,7 +64,7 @@ $(function () {
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
     .fail(function() {
-      alert.log('error');
+      alert('error');
     });
   }
   };
