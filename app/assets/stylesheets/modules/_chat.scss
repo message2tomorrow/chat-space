@@ -41,7 +41,7 @@
     background-color: #FAFAFA;
     box-sizing: border-box;
     padding: 46px 40px 0;
-    height: 560px;
+    height: calc(100vh - 100px - 91px);
     overflow: scroll;
     .message {
       .upper-message {
