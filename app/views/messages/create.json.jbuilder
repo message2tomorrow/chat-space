@@ -4,3 +4,4 @@ json.date @message.created_at.strftime("%Y/%m/%d(%a) %H:%M")
 json.content @message.content
 json.image @message.image_url
 
+
