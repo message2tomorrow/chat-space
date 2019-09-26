@@ -21,7 +21,6 @@ stdout_path "#{app_path}/log/unicorn.stdout.log"
 
 #Railsアプリケーションの応答を待つ上限時間を設定
 timeout 60
-
 #以下は応用的な設定なので説明は割愛
 
 preload_app true
