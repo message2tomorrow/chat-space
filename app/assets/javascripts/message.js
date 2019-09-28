@@ -68,5 +68,5 @@ $(function () {
     });
   }
   };
-  setInterval(reloadMessages, 3000);
+  setInterval(reloadMessages, 5000);
 });
